@@ -2,7 +2,25 @@
 # installs nginx and configure it to listen on port 80
 # print "Hello World"
 
+
+#updating the system
 sudo apt-get -y update
+
+#Installing nginx
 sudo apt-get -y install nginx
-echo 'Hello World!' > /var/www/html/index.nginx-debian.html
+
+#Starting nginx
 sudo service nginx start
+
+#Allowing nginx on firewall
+sudo ufw allow 'Nginx HTTP'
+
+#Grandting user permissions
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chmod -R 755 /var/www
+
+#Creating a custom HTML page with hello world message
+echo 'Hello World!' > /var/www/html/index.nginx-debian.html
+
+#Restart nginx
+sudo service nginx restart
